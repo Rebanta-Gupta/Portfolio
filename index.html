@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rebanta Gupta | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import('/src/main.tsx').catch((error) => {
+        console.error('Failed to start app:', error);
+        const root = document.getElementById('root');
+        if (!root) return;
+        root.innerHTML = `
+          <div style="max-width:720px;margin:4rem auto;padding:1.25rem;border-radius:12px;background:#fff3cd;color:#664d03;border:1px solid #ffecb5;font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.5;">
+            <h1 style="margin:0 0 .5rem 0;font-size:1.2rem;">Unable to load the app</h1>
+            <p style="margin:.25rem 0;">This project uses Vite and must be run with the Vite dev server.</p>
+            <p style="margin:.25rem 0;"><strong>Run:</strong> <code>npm install</code> then <code>npm run dev</code></p>
+          </div>
+        `;
+      });
+    </script>
+  </body>
+</html>
