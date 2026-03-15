@@ -1,128 +1,114 @@
-# Rebanta Gupta - Portfolio
+# Rebanta Gupta – Portfolio Website
 
-Personal portfolio website built with React, TypeScript, and Vite.
+Personal engineering portfolio built with **React, TypeScript, and Vite**.  
+This site showcases my projects, technical experience, and skills in **hardware, electronics, and engineering development**.
 
-Live demo: https://rebanta-gupta.github.io/Portfolio/
+🌐 **Live Website**  
+https://rebanta-gupta.github.io/Portfolio/
 
-## Tech Stack
+---
+
+# Overview
+
+This portfolio website highlights my work across engineering and technology projects. It is designed as a **fast, modern single-page application** with animated visual effects and modular components.
+
+The site includes:
+
+- Project showcase pages
+- Hackathon experiences
+- Technical skills overview
+- Work experience
+- Contact information
+
+The project is built using a modern frontend stack focused on **performance, maintainability, and scalability**.
+
+---
+
+# Tech Stack
+
+**Frontend**
 
 - React 19
 - TypeScript
 - Vite
 - React Router
-- GSAP + OGL (visual effects)
-- ESLint (flat config)
-- Vitest + Testing Library
 
-## Prerequisites
+**Visual Effects**
 
-- Node.js 18+
-- npm 8+
+- GSAP
+- OGL (WebGL graphics)
 
-## Setup
+**Development Tools**
 
-```bash
-npm install
-```
+- ESLint (Flat Config)
+- Vitest
+- Testing Library
 
-## Development
+---
 
-```bash
-npm run dev
-```
+# Features
 
-Vite will print the local URL (usually `http://localhost:5173` or the next free port).
+- Modern **React + TypeScript architecture**
+- **Animated UI and visual effects**
+- Modular and reusable components
+- Project detail pages with routing
+- Image lightbox for project galleries
+- Fully deployable to **GitHub Pages**
+- Centralized portfolio content management
 
-## Quality Checks
+---
 
-```bash
-npm run lint
-npm run test
-npm run build
-```
-
-Optional fixes/watch mode:
-
-```bash
-npm run lint:fix
-npm run test:watch
-```
-
-## Production
-
-Build:
-
-```bash
-npm run build
-```
-
-Preview built output:
-
-```bash
-npm run preview
-```
-
-Deploy to GitHub Pages:
-
-```bash
-npm run deploy
-```
-
-## Project Structure
+# Project Structure
 
 ```
-.
+Portfolio
+│
 ├── public/
 │   └── images/
+│
 ├── src/
 │   ├── App.tsx
 │   ├── main.tsx
-│   ├── vite-env.d.ts
+│   │
 │   ├── components/
 │   │   ├── effects/
 │   │   ├── layout/
 │   │   ├── overlays/
-│   │   ├── sections/
-│   │   └── index.ts
+│   │   └── sections/
+│   │
 │   ├── content/
 │   │   └── portfolioData.ts
+│   │
 │   ├── hooks/
 │   │   ├── usePortfolioData.ts
 │   │   └── useRevealOnScroll.ts
+│   │
 │   ├── pages/
 │   │   ├── HomePage.tsx
 │   │   └── ProjectDetailsPage.tsx
+│   │
 │   ├── styles/
 │   │   └── style.css
-│   ├── test/
-│   │   └── setup.ts
+│   │
 │   ├── types/
-│   │   ├── index.ts
 │   │   └── portfolio.ts
+│   │
 │   └── utils/
 │       └── portfolio.ts
+│
 ├── eslint.config.js
 ├── vitest.config.ts
+├── vite.config.ts
 ├── index.html
-├── package.json
-└── vite.config.ts
+└── package.json
 ```
 
-## Content Editing
+# Author
 
-All portfolio content is centralized in `src/content/portfolioData.ts`.
+**Rebanta Gupta**
 
-Update these keys to edit sections:
+GitHub:  
+https://github.com/Rebanta-Gupta
 
-- `hero`: greeting, name, highlight, tagline
-- `about`: paragraph list
-- `experience`: work history items
-- `projects`: project cards + detail page data
-- `hackathons`: hackathon cards + detail page data
-- `skills`: grouped skills
-- `contact`: contact methods and links
-
-## Notes
-
-- Routing uses hash-based URLs for GitHub Pages compatibility.
-- Project detail pages are route-based (`/projects/:projectId`) with modal image lightbox support.
+Portfolio:  
+https://rebanta-gupta.github.io/Portfolio/
