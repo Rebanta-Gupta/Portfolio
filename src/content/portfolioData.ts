@@ -39,7 +39,7 @@ const portfolioData: PortfolioData = {
   projects: [
     {
       id: 'nanomaterials',
-      icon: '🔬',
+      icon: 'beaker',
       title: 'Applied Nanomaterials for Electronic Systems',
       brief: 'Synthesized silver nanoparticles and fabricated a functional PCB using printed electronics techniques.',
       description: [
@@ -96,7 +96,7 @@ const portfolioData: PortfolioData = {
     },
     {
       id: 'teng',
-      icon: '⚡',
+      icon: 'zap',
       title: 'Triboelectric Nanogenerator (TENG)',
       brief: 'Designed mechanical energy harvesting device converting motion to electricity.',
       description: [
@@ -109,7 +109,7 @@ const portfolioData: PortfolioData = {
     },
     {
       id: 'statfit',
-      icon: '📊',
+      icon: 'chart-column',
       title: 'Statistical Distribution Fitting Tool',
       brief: 'Interactive web app for statistical analysis with support for multiple distributions.',
       description: [
@@ -124,7 +124,7 @@ const portfolioData: PortfolioData = {
   hackathons: [
     {
       id: 'hardhaq',
-      icon: '🔮',
+      icon: 'atom',
       title: 'HardHaQ – Quantum Hardware Hackathon',
       brief: 'Developed RF Paul trap models with automated simulations for quantum computing applications.',
       description: [
@@ -138,33 +138,36 @@ const portfolioData: PortfolioData = {
   ],
   skills: [
     {
-      category: '💻 Languages',
+      icon: 'code',
+      category: 'Languages',
       items: ['Python', 'Java', 'JavaScript', 'MATLAB', 'HTML & CSS', 'JSON'],
     },
     {
-      category: '📦 Frameworks & Libraries',
+      icon: 'boxes',
+      category: 'Frameworks & Libraries',
       items: ['Streamlit', 'NumPy', 'SciPy', 'Pandas', 'Matplotlib'],
     },
     {
-      category: '🛠️ Tools & Hardware',
+      icon: 'wrench',
+      category: 'Tools & Hardware',
       items: ['SolidWorks', 'KiCAD', 'PCB Fabrication', 'Voltera V-One', '3D Printing', 'Git & GitHub'],
     },
   ],
   contact: [
     {
-      icon: '✉️',
+      icon: 'mail',
       label: 'Email',
       value: 'guptarebanta816@gmail.com',
       url: 'mailto:guptarebanta816@gmail.com',
     },
     {
-      icon: '💼',
+      icon: 'linkedin',
       label: 'LinkedIn',
       value: 'Rebanta-Gupta',
       url: 'https://www.linkedin.com/in/Rebanta-Gupta',
     },
     {
-      icon: '🐙',
+      icon: 'github',
       label: 'GitHub',
       value: 'Rebanta-Gupta',
       url: 'https://github.com/Rebanta-Gupta',

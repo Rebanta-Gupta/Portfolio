@@ -1,4 +1,5 @@
 import type { SkillGroup } from '../../types';
+import { PortfolioIconSvg } from '../../utils/icons';
 
 interface SkillsProps {
   skills: SkillGroup[];
@@ -15,7 +16,10 @@ export default function Skills({ skills }: SkillsProps) {
               key={i}
               className="rounded-2xl border border-slate-300/12 bg-slate-900/72 p-6 backdrop-blur-xs transition hover:-translate-y-1 hover:border-sky-300/35 hover:shadow-[0_8px_32px_rgba(56,189,248,0.12)]"
             >
-              <h3 className="mb-4 text-base font-semibold text-slate-50">{group.category}</h3>
+              <h3 className="mb-4 flex items-center gap-2 text-base font-semibold text-slate-50">
+                <PortfolioIconSvg name={group.icon} className="h-5 w-5 text-sky-100" />
+                <span>{group.category}</span>
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((skill, j) => (
                   <span

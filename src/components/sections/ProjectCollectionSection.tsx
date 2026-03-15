@@ -1,4 +1,5 @@
 import type { ProjectItem } from '../../types';
+import { PortfolioIconSvg } from '../../utils/icons';
 
 interface ProjectCollectionSectionProps {
 	sectionId: string;
@@ -33,7 +34,7 @@ function ProjectCollectionCard({
 			aria-label={`View details for ${item.title}`}
 		>
 			<div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-300/10 text-3xl">
-				{item.icon}
+				<PortfolioIconSvg name={item.icon} className="h-8 w-8 text-sky-100" />
 			</div>
 			<div className="flex-1">
 				<h3 className="mb-1 text-xl font-semibold text-slate-50">{item.title}</h3>

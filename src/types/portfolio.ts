@@ -20,9 +20,21 @@ export interface ProjectImage {
   description: string;
 }
 
+export type PortfolioIcon =
+  | 'atom'
+  | 'beaker'
+  | 'boxes'
+  | 'chart-column'
+  | 'code'
+  | 'github'
+  | 'linkedin'
+  | 'mail'
+  | 'wrench'
+  | 'zap';
+
 export interface ProjectItem {
   id: string;
-  icon: string;
+  icon: PortfolioIcon;
   title: string;
   brief: string;
   description: string[];
@@ -32,12 +44,13 @@ export interface ProjectItem {
 }
 
 export interface SkillGroup {
+  icon: PortfolioIcon;
   category: string;
   items: string[];
 }
 
 export interface ContactItem {
-  icon: string;
+  icon: PortfolioIcon;
   label: string;
   value: string;
   url: string;

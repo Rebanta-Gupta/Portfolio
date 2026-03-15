@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Lightbox } from '../components';
 import ProjectImageGallery from '../components/overlays/ProjectImageGallery';
 import type { PortfolioData } from '../types';
+import { PortfolioIconSvg } from '../utils/icons';
 import { findProjectById } from '../utils/portfolio';
 
 interface ProjectRouteState {
@@ -77,7 +78,7 @@ export default function ProjectDetailsPage({ data }: ProjectDetailsPageProps) {
           <div>
             <div className="mb-8 flex items-center gap-5 max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-3">
               <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky-300/10 text-[2.5rem]">
-                {project.icon}
+                <PortfolioIconSvg name={project.icon} className="h-10 w-10 text-sky-100" />
               </span>
               <h1 className="bg-linear-to-r from-white via-cyan-100 to-sky-300 bg-clip-text text-[clamp(1.5rem,4vw,2.2rem)] font-bold leading-tight text-transparent">
                 {project.title}

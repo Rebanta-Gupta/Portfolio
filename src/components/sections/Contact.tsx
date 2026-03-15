@@ -1,4 +1,5 @@
 import type { ContactItem } from '../../types';
+import { PortfolioIconSvg } from '../../utils/icons';
 
 interface ContactProps {
   contact: ContactItem[];
@@ -17,7 +18,9 @@ export default function Contact({ contact }: ContactProps) {
               {...(!item.url.startsWith('mailto') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className="block rounded-2xl border border-slate-300/12 bg-slate-900/72 p-6 text-center backdrop-blur-xs transition hover:-translate-y-1 hover:border-sky-300/35 hover:shadow-[0_8px_32px_rgba(56,189,248,0.12)]"
             >
-              <span className="mb-3 block text-3xl">{item.icon}</span>
+              <span className="mb-3 flex justify-center">
+                <PortfolioIconSvg name={item.icon} className="h-8 w-8 text-sky-100" />
+              </span>
               <h3 className="mb-1 text-base font-semibold text-slate-50">{item.label}</h3>
               <p className="text-sm text-slate-200/95">{item.value}</p>
             </a>
