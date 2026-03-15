@@ -47,8 +47,10 @@ export default function ProjectPanel({ project, onClose, onOpenLightbox }: Proje
           {project.images.length > 0 && (
             <div className="my-8 grid grid-cols-2 gap-4 max-[600px]:grid-cols-1">
               {project.images.map((img, i) => (
-                <figure
+                <button
+                  type="button"
                   key={i}
+                  aria-label={`Open image ${i + 1}: ${img.caption}`}
                   className="group relative cursor-pointer overflow-hidden rounded-xl border border-slate-300/12 bg-slate-900/72 transition hover:-translate-y-1 hover:border-sky-300/35 hover:shadow-[0_8px_32px_rgba(56,189,248,0.12)]"
                   onClick={() => onOpenLightbox(img)}
                 >
@@ -60,10 +62,10 @@ export default function ProjectPanel({ project, onClose, onOpenLightbox }: Proje
                     src={img.src}
                     alt={img.alt}
                   />
-                  <figcaption className="px-3 py-2 text-center text-[0.7rem] leading-5 text-slate-400">
+                  <span className="block px-3 py-2 text-center text-[0.7rem] leading-5 text-slate-400">
                     {img.caption}
-                  </figcaption>
-                </figure>
+                  </span>
+                </button>
               ))}
             </div>
           )}

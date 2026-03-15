@@ -19,7 +19,7 @@ export default function About({ about }: AboutProps) {
           <div className="reveal md:justify-self-end">
             <div className="h-[280px] w-[280px] overflow-hidden rounded-full border border-sky-300/45 bg-slate-900/45 p-2 shadow-[0_10px_30px_rgba(0,0,0,0.35)] md:h-[320px] md:w-[320px]">
               <img
-                src="images/rebanta-portrait.jpeg"
+                src="/images/rebanta-portrait.jpeg"
                 alt="Rebanta portrait"
                 className="h-full w-full rounded-full object-cover object-top"
                 loading="lazy"

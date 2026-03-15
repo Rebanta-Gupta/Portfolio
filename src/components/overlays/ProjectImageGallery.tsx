@@ -26,21 +26,32 @@ export default function ProjectImageGallery({ images, onOpenImage, className = "
   const spin = useCallback(
     (dir: number) => {
       setTooltip(t => ({ ...t, visible: false }));
+      if (images.length === 0) return;
       setActiveIndex(prev => wrapIdx(prev + dir));
     },
-    [wrapIdx]
+    [images.length, wrapIdx]
   );
-
-  if (images.length === 0) return null;
 
   const viewportWidth = typeof window === "undefined" ? 1280 : window.innerWidth;
   const tooltipLeft = Math.min(Math.max(tooltip.x + 18, 12), viewportWidth - 228);
   const arrowOffset = 176;
 
   const visibleCards = useMemo(
-    () => SLOTS.map(slot => ({ slot, index: wrapIdx(activeIndex + slot), image: images[wrapIdx(activeIndex + slot)] })),
+    () => {
+      if (images.length === 0) return [];
+      return SLOTS.map(slot => ({ slot, index: wrapIdx(activeIndex + slot), image: images[wrapIdx(activeIndex + slot)] }));
+    },
     [activeIndex, images, wrapIdx]
   );
+
+  const handleCardKeyDown = useCallback((e: React.KeyboardEvent<HTMLElement>, index: number) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onOpenImage(index);
+    }
+  }, [onOpenImage]);
+
+  if (images.length === 0) return null;
 
   return (
     <div
@@ -72,9 +83,11 @@ export default function ProjectImageGallery({ images, onOpenImage, className = "
         const isCenter = slot === 0;
 
         return (
-          <figure
+          <button
+            type="button"
             key={slot}
             className={`absolute left-1/2 w-[min(92vw,460px)] overflow-hidden rounded-[28px] border-4 border-slate-100/90 bg-slate-900/72 transition-[transform,opacity,filter,border-color] duration-300 ease-out hover:border-sky-300/70 ${isCenter ? "cursor-none" : "cursor-pointer"}`}
+            aria-label={`${isCenter ? "Open" : "Preview"} image ${index + 1}: ${image.caption}`}
             style={{
               top: "50%",
               transform: `perspective(1100px) translate(-50%, calc(-50% + ${slot * SLOT_PX}px)) scale(${scale}) rotateX(${rx}deg)`,
@@ -84,13 +97,14 @@ export default function ProjectImageGallery({ images, onOpenImage, className = "
             }}
             onMouseEnter={() => isCenter && setTooltip(t => ({ ...t, visible: true }))}
             onMouseLeave={() => isCenter && setTooltip(t => ({ ...t, visible: false }))}
+            onKeyDown={e => handleCardKeyDown(e, index)}
             onClick={() => onOpenImage(index)}
           >
             <img className="h-56 w-full object-cover" src={image.src} alt={image.alt} />
-            <figcaption className="px-3 py-2 text-center text-[0.76rem] leading-5 text-slate-200/95">
+            <span className="block px-3 py-2 text-center text-[0.76rem] leading-5 text-slate-200/95">
               {image.caption}
-            </figcaption>
-          </figure>
+            </span>
+          </button>
         );
       })}
 

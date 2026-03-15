@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import type { ProjectImage } from '../../types';
 
 interface LightboxProps {
@@ -11,24 +11,70 @@ interface LightboxProps {
 
 export default function Lightbox({ images, currentIndex, onClose, onPrevious, onNext }: LightboxProps) {
   const image = images[currentIndex];
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      const container = dialogRef.current;
+      if (!container) return;
+
+      const focusable = container.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+        return;
+      }
+
+      if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+      return;
+    }
+
     if (e.key === 'Escape') onClose();
     if (e.key === 'ArrowLeft') onPrevious();
     if (e.key === 'ArrowRight') onNext();
   }, [onClose, onPrevious, onNext]);
 
   useEffect(() => {
+    const previousActiveElement = document.activeElement as HTMLElement | null;
+
+    closeButtonRef.current?.focus();
     document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previousActiveElement?.focus();
+    };
   }, [handleKeyDown]);
 
   if (!image) return null;
 
   return (
-    <div className="fixed inset-0 z-[5000] flex items-center justify-center" aria-hidden="false">
-      <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="relative z-[1] w-[90%] max-w-[700px]">
+    <div
+      className="fixed inset-0 z-[5000] flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Project image lightbox"
+    >
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/85 backdrop-blur-sm"
+        onClick={onClose}
+        aria-label="Close lightbox backdrop"
+      ></button>
+      <div ref={dialogRef} className="relative z-[1] w-[90%] max-w-[700px]">
         <span className="absolute -top-10 left-0 inline-flex items-center gap-1.5 rounded-full border border-sky-300/35 bg-gradient-to-r from-slate-900/92 via-slate-900/90 to-sky-950/70 px-3 py-1.5 text-[11px] font-semibold tracking-[0.02em] text-sky-100 shadow-[0_8px_22px_rgba(6,24,54,0.45)] backdrop-blur-sm max-[600px]:-top-9">
           <span className="text-sky-200/90">Step</span>
           <span className="rounded-full bg-sky-300/16 px-1.5 py-0.5 leading-none text-sky-100">
@@ -36,6 +82,7 @@ export default function Lightbox({ images, currentIndex, onClose, onPrevious, on
           </span>
         </span>
         <button
+          ref={closeButtonRef}
           className="absolute -top-10 right-0 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-lg text-white transition hover:border-sky-300 hover:bg-white/20 hover:text-sky-100 max-[600px]:-top-9 max-[600px]:h-8 max-[600px]:w-8"
           aria-label="Close image"
           onClick={onClose}
