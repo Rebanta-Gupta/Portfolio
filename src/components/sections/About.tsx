@@ -3,6 +3,8 @@ interface AboutProps {
 }
 
 export default function About({ about }: AboutProps) {
+  const portraitSrc = `${import.meta.env.BASE_URL}images/rebanta-portrait.jpeg`;
+
   return (
     <section id="about" className="section relative -mt-24 px-6 pt-36 pb-20 max-[480px]:px-4 max-[480px]:-mt-14 max-[480px]:pt-24 max-[480px]:pb-12">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[#060b18] via-[#060b18]/72 to-transparent blur-2xl" />
@@ -19,7 +21,7 @@ export default function About({ about }: AboutProps) {
           <div className="reveal md:justify-self-end">
             <div className="h-[280px] w-[280px] overflow-hidden rounded-full border border-sky-300/45 bg-slate-900/45 p-2 shadow-[0_10px_30px_rgba(0,0,0,0.35)] md:h-[320px] md:w-[320px]">
               <img
-                src="/images/rebanta-portrait.jpeg"
+                src={portraitSrc}
                 alt="Rebanta portrait"
                 className="h-full w-full rounded-full object-cover object-top"
                 loading="lazy"
